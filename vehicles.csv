@@ -1,0 +1,29 @@
+regNo,ownerName,model,fuelType,color,manufacturingYear,regDate,purchaseDate,chassisNo,engineNo,state,district,address,contact,email,insurance_upto,pucc_upto,fitness_upto
+AB12CD3456,John Doe,Maruti Suzuki Swift,Petrol,Red,2020,2020-01-01,2020-01-15,XYZ123456789,ABC987654321,Maharashtra,Pune,123 ABC Street,9876543210,john@example.com,31 12 2025,30 06 2024,15 01 2025
+EF34GH5678,Jane Smith,Tata Nexon,Diesel,Blue,2018,2018-06-15,2018-06-30,XYZ987654321,DEF654321987,Karnataka,Bangalore,456 XYZ Road,9876543211,jane@example.com,15 12 2024,15 07 2024,01 12 2024
+GH56IJ1234,Ananya Sharma,Honda City,Petrol,White,2019,2019-05-10,2019-05-20,XYZ123987654,ABC123456789,Maharashtra,Mumbai,101 Beach Rd,9834567890,ananya@example.com,10 05 2025,10 06 2024,20 05 2025
+KL78MN5678,Sandeep Kumar,Hyundai Verna,Diesel,Black,2017,2017-09-01,2017-09-05,XYZ987654321,DEF765432109,Tamil Nadu,Chennai,202 Sunset Blvd,9856347210,sandeep@example.com,30 09 2024,15 07 2024,25 08 2025
+OP90QR6789,Rajesh Mehta,Toyota Corolla,Petrol,Silver,2021,2021-02-15,2021-02-20,XYZ654321987,XYZ321987654,Delhi,South Delhi,303 Maple St,9876544321,rajesh@example.com,20 02 2026,15 04 2024,05 01 2026
+MN34AB4567,Prashant Yadav,Mahindra XUV700,Diesel,Red,2020,2020-03-10,2020-03-20,ABC123456789,DEF987654321,UP,Kanpur,456 Oak Avenue,9876541230,prashant@example.com,01 03 2025,12 07 2024,25 05 2025
+QR56ST7890,Rina Gupta,Maruti Suzuki Baleno,Petrol,Blue,2022,2022-04-01,2022-04-10,XYZ654987321,DEF321654987,Madhya Pradesh,Indore,789 Pine Lane,9812345678,rina@example.com,15 04 2026,20 06 2024,15 06 2025
+AB90CD2345,Manoj Patil,Tata Harrier,Diesel,Green,2020,2020-07-15,2020-07-20,XYZ123654987,DEF987321654,Rajasthan,Jaipur,101 Rose Garden,9865432101,manoj@example.com,30 07 2025,05 09 2024,10 08 2025
+EF12GH3456,Pooja Gupta,Renault Kwid,Petrol,Yellow,2018,2018-06-01,2018-06-10,XYZ321654987,DEF654987321,Karnataka,Mysore,202 Park Rd,9876543210,pooja@example.com,10 06 2024,25 07 2024,15 05 2025
+GH34IJ5678,Sushil Kumar,Maruti Suzuki Dzire,Petrol,White,2019,2019-01-25,2019-02-05,XYZ987654321,DEF654321987,Maharashtra,Pune,123 Orchid St,9823456789,sushil@example.com,15 01 2025,10 06 2024,30 05 2025
+KL56MN7890,Neha Kapoor,Honda Jazz,Diesel,Orange,2021,2021-08-15,2021-08-20,XYZ123987654,ABC321654987,Haryana,Faridabad,123 Maple Ave,9887654321,neha@example.com,15 08 2026,20 09 2024,25 09 2025
+OP78QR8901,Ajay Singh,Ford EcoSport,Petrol,Black,2020,2020-10-10,2020-10-15,XYZ654321987,DEF987654321,Delhi,North Delhi,456 Willow Rd,9871234567,ajay@example.com,20 10 2025,15 08 2024,10 11 2025
+MN90AB2345,Rekha Reddy,Hyundai Elite i20,Diesel,Silver,2022,2022-11-01,2022-11-05,XYZ123987654,ABC987654321,Andhra Pradesh,Vijayawada,789 Silver Lane,9812345678,rekha@example.com,01 11 2026,10 12 2024,15 12 2025
+QR12ST3456,Sunil Mehra,Maruti Suzuki WagonR,Petrol,Red,2019,2019-07-15,2019-07-20,XYZ987654321,DEF321987654,Madhya Pradesh,Bhopal,101 Green Park,9801234567,sunil@example.com,20 07 2025,12 08 2024,25 07 2025
+AB34CD5678,Sarita Rani,Tata Tigor,Diesel,Blue,2021,2021-05-10,2021-05-15,XYZ123987654,DEF987654321,Uttarakhand,Dehradun,202 Peach Street,9812345670,sarita@example.com,10 05 2026,15 09 2024,10 08 2025
+EF56GH7890,Deepak Chauhan,Volkswagen Polo,Petrol,Green,2019,2019-03-20,2019-03-25,XYZ654987321,DEF123987654,Rajasthan,Jaipur,123 Palm Ave,9876543210,deepak@example.com,20 03 2025,05 07 2024,10 06 2025
+GH78IJ9012,Shilpa Pandey,Skoda Rapid,Diesel,White,2020,2020-07-01,2020-07-10,XYZ987654321,DEF321987654,Maharashtra,Nashik,456 Rose St,9812345679,shilpa@example.com,15 07 2025,25 08 2024,05 09 2025
+KL90MN1234,Rajesh Patel,Chevrolet Beat,Petrol,Black,2018,2018-11-05,2018-11-10,XYZ321987654,DEF654987321,UP,Noida,101 Blue Road,9823456789,rajesh@example.com,05 11 2024,15 10 2024,01 11 2025
+OP12QR3456,Pooja Sharma,Maruti Suzuki Ertiga,Diesel,Silver,2021,2021-02-25,2021-03-05,XYZ987654321,DEF321987654,Tamil Nadu,Chennai,789 Oak St,9801234567,pooja.sharma@example.com,25 02 2026,15 09 2024,30 06 2025
+MN34AB5678,Vikram Rathi,Kia Seltos,Petrol,Yellow,2020,2020-09-10,2020-09-15,XYZ654321987,DEF987654321,Madhya Pradesh,Gwalior,202 Sunset Rd,9812345678,vikram@example.com,10 09 2025,25 08 2024,15 07 2025
+QR56ST7890,Manisha Agarwal,Honda Amaze,Diesel,Red,2021,2021-04-10,2021-04-15,XYZ987654321,DEF321654987,Karnataka,Bangalore,101 Oak Lane,9876543210,manisha@example.com,10 04 2026,25 07 2024,10 09 2025
+AB78CD9012,Nisha Gupta,Nissan Micra,Petrol,Blue,2019,2019-12-01,2019-12-05,XYZ123987654,DEF654987321,Delhi,West Delhi,303 Green St,9812345670,nisha@example.com,01 12 2024,15 07 2024,20 06 2025
+EF90GH2345,Harish Kumar,Maruti Suzuki Vitara Brezza,Diesel,Silver,2020,2020-06-25,2020-06-30,XYZ654987321,DEF987654321,UP,Lucknow,123 Oak Avenue,9801234567,harish@example.com,25 06 2025,10 08 2024,15 07 2025
+GH12IJ3456,Ayesha Khan,Ford Figo,Petrol,Green,2021,2021-03-01,2021-03-10,XYZ987654321,DEF654987321,Telangana,Hyderabad,789 Blue Road,9823456789,ayesha@example.com,01 03 2026,15 09 2024,20 08 2025
+KL34MN5678,Shweta Desai,Honda WR-V,Diesel,Orange,2022,2022-07-20,2022-07-25,XYZ321654987,DEF987654321,Maharashtra,Pune,202 Maple Rd,9812345678,shweta@example.com,20 07 2026,15 09 2024,30 07 2025
+OP56QR7890,Kumar Singh,Toyota Innova Crysta,Petrol,Red,2018,2018-04-05,2018-04-10,XYZ123987654,DEF654987321,UP,Agra,303 Silver Ave,9823456789,kumar@example.com,05 04 2024,12 06 2024,10 05 2025
+MN78AB9012,Arun Verma,Hyundai Creta,Diesel,White,2019,2019-11-15,2019-11-20,XYZ987654321,DEF987654321,Madhya Pradesh,Indore,456 Green St,9812345670,arun@example.com,15 11 2024,25 08 2024,05 09 2025
+QR90ST1234,Ravi Kumar,Maruti Suzuki Alto,Petrol,Blue,2021,2021-10-15,2021-10-20,XYZ654321987,DEF987654321,Karnataka,Hub

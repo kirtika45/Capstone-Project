@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Registration Validator</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #004085;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 18px;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: 100%;
+            max-width: 400px;
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        input:focus {
+            border-color: #0056b3;
+            outline: none;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #003d6b;
+        }
+
+        .vehicle-details {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            text-align: left;
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+
+        th {
+            background-color: #004085;
+            color: white;
+        }
+
+        .warning {
+            color: red;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            input {
+                width: 100%;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Vehicle Insurance and Pollution Check</h1>
+
+    <label for="regInput">Enter Vehicle Registration Number:</label>
+    <input type="text" id="regInput" placeholder="e.g., AB12CD3456" aria-label="Vehicle Registration Input">
+    <button id="validateBtn">Validate</button>
+
+    <div id="vehicleDetails" class="vehicle-details">
+        <h3>Vehicle Details</h3>
+        <table id="vehicleTable"></table>
+        <div id="vehicleWarnings" class="warning"></div>
+
+        <h3>Document Status</h3>
+        <div id="insuranceStatus"></div>
+        <div id="pucStatus"></div>
+        <div id="fitnessStatus"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <script>
+        // Function to load CSV data and parse it into an array of objects
+        async function loadCSV() {
+            const response = await fetch("vehicles.csv"); // Replace with the correct path to your CSV file
+            const data = await response.text();
+            const rows = data.split("\n").slice(1); // Skip header row
+
+            return rows.map(row => {
+                const cols = row.split(",");
+                return {
+                    regNo: cols[0]?.trim(),
+                    ownerName: cols[1]?.trim(),
+                    model: cols[2]?.trim(),
+                    fuelType: cols[3]?.trim(),
+                    color: cols[4]?.trim(),
+                    manufacturingYear: cols[5]?.trim(),
+                    regDate: cols[6]?.trim(),
+                    purchaseDate: cols[7]?.trim(),
+                    chassisNo: cols[8]?.trim(),
+                    engineNo: cols[9]?.trim(),
+                    state: cols[10]?.trim(),
+                    district: cols[11]?.trim(),
+                    address: cols[12]?.trim(),
+                    contact: cols[13]?.trim(),
+                    email: cols[14]?.trim(),
+                    insurance_upto: cols[15]?.trim(),
+                    pucc_upto: cols[16]?.trim(),
+                    fitness_upto: cols[17]?.trim()
+                };
+            });
+        }
+
+        // Display vehicle details
+        function displayVehicleDetails(vehicle) {
+            const table = document.getElementById("vehicleTable");
+            const warnings = document.getElementById("vehicleWarnings");
+            const detailsDiv = document.getElementById("vehicleDetails");
+
+            // Clear previous details
+            table.innerHTML = "";
+            warnings.innerText = "";
+
+            if (!vehicle) {
+                warnings.innerText = "Vehicle not found or invalid registration number.";
+                detailsDiv.style.display = "block";
+                return;
+            }
+
+            // Populate table with vehicle details
+            const details = Object.entries(vehicle);
+            details.forEach(([key, value]) => {
+                const row = document.createElement("tr");
+                const th = document.createElement("th");
+                const td = document.createElement("td");
+
+                th.textContent = key.replace(/([A-Z])/g, " $1").toUpperCase();
+                td.textContent = value || "N/A";
+
+                row.appendChild(th);
+                row.appendChild(td);
+                table.appendChild(row);
+            });
+
+            // Validate document statuses
+            validateDocuments(vehicle);
+
+            detailsDiv.style.display = "block";
+        }
+
+        // Validate insurance, PUC, and fitness
+        function validateDocuments(vehicle) {
+            const today = new Date();
+            const insuranceUpto = parseDate(vehicle.insurance_upto);
+            const puccUpto = parseDate(vehicle.pucc_upto);
+            const fitnessUpto = parseDate(vehicle.fitness_upto);
+
+            const insuranceStatus = document.getElementById("insuranceStatus");
+            const pucStatus = document.getElementById("pucStatus");
+            const fitnessStatus = document.getElementById("fitnessStatus");
+
+            // Insurance validation
+            if (insuranceUpto instanceof Date && insuranceUpto < today) {
+                insuranceStatus.innerHTML = `<p class="invalid">⚠️ Insurance expired on ${formatDate(insuranceUpto)}. Please renew.</p>`;
+            } else if (insuranceUpto instanceof Date) {
+                insuranceStatus.innerHTML = `<p class="valid">✔️ Insurance is valid till ${formatDate(insuranceUpto)}</p>`;
+            } else {
+                insuranceStatus.innerHTML = `<p class="invalid">⚠️ Invalid Insurance date. Please check the data.</p>`;
+            }
+
+            // PUC validation
+            if (puccUpto instanceof Date && puccUpto < today) {
+                pucStatus.innerHTML = `<p class="invalid">⚠️ PUC expired on ${formatDate(puccUpto)}. Please renew.</p>`;
+            } else if (puccUpto instanceof Date) {
+                pucStatus.innerHTML = `<p class="valid">✔️ PUCC is valid till ${formatDate(puccUpto)}</p>`;
+            } else {
+                pucStatus.innerHTML = `<p class="invalid">⚠️ Invalid PUC date. Please check the data.</p>`;
+            }
+
+            // Fitness validation
+            if (fitnessUpto instanceof Date && fitnessUpto < today) {
+                fitnessStatus.innerHTML = `<p class="invalid">⚠️ Fitness expired on ${formatDate(fitnessUpto)}. Please renew.</p>`;
+            } else if (fitnessUpto instanceof Date) {
+                fitnessStatus.innerHTML = `<p class="valid">✔️ Fitness is valid till ${formatDate(fitnessUpto)}</p>`;
+            } else {
+                fitnessStatus.innerHTML = `<p class="invalid">⚠️ Invalid Fitness date. Please check the data.</p>`;
+            }
+        }
+
+        // Helper function to parse dates in DD MM YYYY format
+        function parseDate(dateStr) {
+            if (!dateStr) return new Date(0); // Return invalid date if there's no date string
+
+            const parts = dateStr.split(" ");  // Split by space instead of slashes
+
+            if (parts.length === 3) {
+                const [day, month, year] = parts.map(part => parseInt(part, 10));
+                const parsedDate = new Date(year, month - 1, day);
+
+                // Check if the date is valid
+                if (parsedDate.getDate() === day && parsedDate.getMonth() === month - 1 && parsedDate.getFullYear() === year) {
+                    return parsedDate;
+                }
+            }
+            console.log("Invalid date string:", dateStr); // Log invalid date string
+            return new Date(0); // Return invalid date if parsing fails
+        }
+
+        // Helper function to format the date as DD/MM/YYYY
+        function formatDate(date) {
+            const day = String(date.getDate()).padStart(2, "0");
+            const month = String(date.getMonth() + 1).padStart(2, "0");
+            const year = date.getFullYear();
+            return `${day}/${month}/${year}`;
+        }
+
+        // Function to validate vehicle registration
+        async function validateVehicle() {
+            const regInput = document.getElementById("regInput").value.trim();
+            if (!regInput) {
+                alert("Please enter a vehicle registration number.");
+                return;
+            }
+
+            // Load the CSV data and validate the registration number
+            const vehicles = await loadCSV();
+            const vehicle = vehicles.find(v => v.regNo === regInput);
+
+            // Display the vehicle details
+            displayVehicleDetails(vehicle);
+        }
+
+        // Event listener for validation button
+        document.getElementById("validateBtn").addEventListener("click", validateVehicle);
+    </script>
+</body>
+</html>
