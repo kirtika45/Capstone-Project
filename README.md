@@ -13,7 +13,6 @@ This project focuses on automating the verification of vehicle insurance, pollut
 ## Features
 - **RFID Integration:** Utilize FASTag technology for vehicle identification.
 - **Database Connectivity:** Access vehicle insurance and pollution certificate details in real-time.
-- **Automated Alerts:** Notify authorities about non-compliant vehicles.
 - **Scalable Architecture:** Designed to handle high traffic volumes efficiently.
 
 ## Technologies Used
@@ -22,8 +21,6 @@ This project focuses on automating the verification of vehicle insurance, pollut
 - **Frameworks and Libraries:**
   - Flask / Django (for web integration)
   - Pandas
-  - NumPy
-- **Databases:** MySQL / PostgreSQL
 
 ## Architecture
 1. **Data Collection:**
@@ -47,18 +44,12 @@ This project focuses on automating the verification of vehicle insurance, pollut
    ```
 3. Install dependencies:
    ```bash
-   pip install -r requirements.txt
-   ```
-4. Set up the database by running the migration scripts:
-   ```bash
-   python manage.py migrate
+   pip install python
    ```
 
+
 ## Usage
-1. Start the server:
-   ```bash
-   python app.py
-   ```
+1. Run the code using Live Server in VS Code
 2. Access the web dashboard at `http://localhost:8000`.
 3. Place RFID-enabled vehicles near the reader to verify compliance.
 
