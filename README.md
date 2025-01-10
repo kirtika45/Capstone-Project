@@ -40,7 +40,7 @@ This project focuses on automating the verification of vehicle insurance, pollut
    ```
 2. Navigate to the project directory:
    ```bash
-   cd toll-gate-automation
+   cd Capstone-Project
    ```
 3. Install dependencies:
    ```bash
